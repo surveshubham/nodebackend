@@ -1,0 +1,54 @@
+//link to install typescript with nodejs :
+https://dev.to/cristain/how-to-set-up-typescript-with-nodejs-and-express-2023-gf
+
+
+
+---------------------------------------------------------------------------------
+//////////////////////////////////////
+1) get user using auth-token
+
+header
+
+Accept: */*
+User-Agent: Thunder Client (https://www.thunderclient.com)
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVhOTIyYjQ4ZTJlMWI4OTM4N2U5ZDkwIn0sImlhdCI6MTcwNTU4MzgzOH0.HL47OQVUOAooqWoLgLwfdvFG_PSUk5y2wafQltxoH5Q
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+///////////////////////////////////////
+2) signup user
+
+header
+
+Accept: */*
+User-Agent: Thunder Client (https://www.thunderclient.com)
+~Access-Control-Allow-Origin: 
+
+body
+{
+    name : "",
+    email : "",
+    password : "",
+}
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+//////////////////////////////////////////
+3) login user
+
+header
+
+Accept: */*
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+body
+{
+    email : "",
+    password : "",
+}
