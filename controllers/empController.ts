@@ -89,24 +89,34 @@ export const createEmployee = async (req: Request, res: Response) => {
 export const assignProjectToEmp = async (req: Request, res: Response) => {
     try {
 
-        const { empID , projectName  }: any = req.body;
+        const { empID, projectName }: any = req.body;
 
-        if(empID == ""){
+        if (empID == "") {
             return res.json({
                 error: `Please enter employee ID`,
             });
-        }else if(projectName == ""){
+        } else if (projectName == "") {
             return res.json({
                 error: `Please enter projectName `,
             });
         }
 
         //find emp with empid;
-        
+        let empQuery = { employeeId: empID }
+
+        let emp = await EmployeeModel.findOne(empQuery);
 
 
+        if(emp == null) {
+            return res.json({
+                error: `Employee with ${empID} does not exsist`,
+            });
+        }
 
+        //have to push project_id but now only pushing projectName.
+        let empPush = await EmployeeModel.updateOne({ employeeId: empID } , { $push: { projectId: projectName } })
 
+        res.json({ emp , empPush });
 
     } catch (error: any) {
         console.log("Error in assignProjectToEmp : ", error.toString());
