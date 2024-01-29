@@ -6,10 +6,10 @@ let jwt = require("jsonwebtoken");
 import { Request, Response } from "express";
 const JWT_SECRET = process.env.JWT_SECRET;
 
-
 //create a new user
 export const userSignup = async (req: Request, res: Response) => {
     try {
+
       const { name, email, password }: any = req.body;
   
       let user = await UserModel.findOne({ email: email });
@@ -22,7 +22,8 @@ export const userSignup = async (req: Request, res: Response) => {
   
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(password, salt);
-  
+
+    
       user = await UserModel.create({
         name: name,
         email: email,
@@ -55,6 +56,7 @@ export const userSignup = async (req: Request, res: Response) => {
   // Authencticate using authtoken / login
 export const userLogin = async (req: any, res: Response) => {
     try {
+      
       const { email, password }: any = req.body;
   
       let user: any = await UserModel.findOne({ email });
